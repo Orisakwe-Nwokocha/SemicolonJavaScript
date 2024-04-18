@@ -1,10 +1,11 @@
 function generate(length, width, obj) {
-    let array = [];
-    for (let i = 0; i < length; i++) {
-        array.push([]);
-        for (let j = 0; j < width; j++) array[i].push(" ");
-    }
-    obj.map(obj => array[obj.row][obj.col] = obj.value);
+    // let array = [];
+    // for (let i = 0; i < length; i++) {
+    //     array.push([]);
+    //     for (let j = 0; j < width; j++) array[i].push(" ");
+    // }
+    let array = Array.from({length}, () => Array(width).fill(" "));
+    obj.forEach(piece => array[piece.row][piece.col] = piece.value);
     return array;
 }
 

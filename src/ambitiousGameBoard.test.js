@@ -16,4 +16,4 @@ test("generates correctly", () => {
 
     let expected = [ [ 'X', 'X', 'O' ], [ 'O', ' ', 'X' ], [ 'X', 'O', '0' ] ];
     expect(generate(length, width, obj)).toEqual(expected);
-})
+});
