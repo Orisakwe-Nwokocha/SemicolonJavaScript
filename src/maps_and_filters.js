@@ -17,16 +17,26 @@ answer = array.map(num => num + 5).filter(number => number % 2 === 0);
 console.log("map, then filter:",answer);
 
 const studentScores = [95, 78, 85, 60, 45, 92];
+// function convertToGrades(studentScores) {
+//     let result = [];
+//     studentScores.map(studentScore => {
+//         if (studentScore >= 90 && studentScore <= 100) result.push("A");
+//         else if (studentScore >= 80) result.push("B");
+//         else if (studentScore >= 70) result.push("C");
+//         else if (studentScore >= 60) result.push("D");
+//         else result.push("F");
+//     });
+//     return result;
+// }
+
 function convertToGrades(studentScores) {
-    let result = [];
-    studentScores.map(studentScore => {
-        if (studentScore >= 90 && studentScore <= 100) result.push("A");
-        else if (studentScore >= 80) result.push("B");
-        else if (studentScore >= 70) result.push("C");
-        else if (studentScore >= 60) result.push("D");
-        else result.push("F");
+    return studentScores.map(studentScore => {
+        if (studentScore >= 90 && studentScore <= 100) return "A";
+        if (studentScore >= 80) return "B";
+        if (studentScore >= 70) return "C";
+        if (studentScore >= 60) return "D";
+        return "F";
     });
-    return result;
 }
 console.log("Scores:", studentScores);
 console.log("Scores to grades:", convertToGrades(studentScores))
