@@ -1,12 +1,3 @@
-/*var var1 = 5000;
-var var3 = var1;
-var var2 = var3;
-prompt("What is your name?")
-
-console.log(var1);
-console.log(var2);
-console.log(var3);*/
-
 function findMinMaxDifferenceOf(numbers) {
     let min = numbers[0];
     let max = numbers[0];
