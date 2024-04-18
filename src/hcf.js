@@ -8,5 +8,7 @@ function findTheHcfOf(numbers) {
     }
 }
 
-console.log(findTheHcfOf([4, 8, 8, 16]))
-console.log(findTheHcfOf([9, 9, 12]))
+// console.log(findTheHcfOf([4, 8, 8, 16]))
+// console.log(findTheHcfOf([9, 9, 12]))
+
+module.exports = findTheHcfOf;
