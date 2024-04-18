@@ -1,18 +1,16 @@
-function generate(length, width, pieces) {
+function generate(length, width, obj) {
     let array = [];
     for (let i = 0; i < length; i++) {
         array.push([]);
         for (let j = 0; j < width; j++) array[i].push(" ");
     }
-    pieces.map(obj => {
-        array[obj.row][obj.col] = obj.value;
-    });
+    obj.map(obj => array[obj.row][obj.col] = obj.value);
     return array;
 }
 
 let length = 3;
 let width = 3;
-let pieces = [
+let obj = [
     {row : 0, col: 0, value: "X"},
     {row : 0, col: 1, value: "X"},
     {row : 0, col: 2, value: "O"},
@@ -23,6 +21,6 @@ let pieces = [
     {row : 2, col: 2, value: "0"},
 ];
 
-console.log(generate(length, width, pieces));
+console.log(generate(length, width, obj));
 
 module.exports = {generate};

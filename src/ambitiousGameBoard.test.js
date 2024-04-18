@@ -3,7 +3,7 @@ const {generate} = require("./ambitiousGameBoard");
 test("generates correctly", () => {
     let length = 3;
     let width = 3;
-    let pieces = [
+    let obj = [
         {row : 0, col: 0, value: "X"},
         {row : 0, col: 1, value: "X"},
         {row : 0, col: 2, value: "O"},
@@ -15,5 +15,5 @@ test("generates correctly", () => {
     ];
 
     let expected = [ [ 'X', 'X', 'O' ], [ 'O', ' ', 'X' ], [ 'X', 'O', '0' ] ];
-    expect(generate(length, width, pieces)).toEqual(expected);
+    expect(generate(length, width, obj)).toEqual(expected);
 })
