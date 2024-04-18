@@ -92,5 +92,11 @@ raw_array.forEach((array) => {
     }, 0);
     sum += a;
 });
+// cleaner reduce method
+
+// let sum = raw_array.reduce((acc, array) => {
+//     return acc + (array.filter(obj => obj !== null && obj.temp <= 10)
+//         .reduce((innerAcc, obj) => innerAcc + obj.population, 0));
+// }, 0);
 
 console.log("Sum of total population:", sum)
