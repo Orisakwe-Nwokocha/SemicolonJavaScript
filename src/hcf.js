@@ -8,7 +8,8 @@ function findTheHcfOf(numbers) {
     }
 }
 
-// console.log(findTheHcfOf([4, 8, 8, 16]))
-// console.log(findTheHcfOf([9, 9, 12]))
+function findEvenNumbersFrom(numbers) {
+    return numbers.filter((number) => number % 2 === 0);
+}
 
-module.exports = findTheHcfOf;
+module.exports = {findTheHcfOf, findEvenNumbersFrom};

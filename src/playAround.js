@@ -1,13 +1,13 @@
-var num = 5
-console.log(num)
-var num = 7
-console.log(num)
-let num = 5
-console.log(num)
-num = 7
-console.log(num)
-console.log(typeof num)
-console.log(typeof null)
+// var num = 5
+// console.log(num)
+// var num = 7
+// console.log(num)
+// let num = 5
+// console.log(num)
+// num = 7
+// console.log(num)
+// console.log(typeof num)
+// console.log(typeof null)
 
 let number = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
 console.log(number)
@@ -22,12 +22,12 @@ console.log(number)
 console.log(number);
 number.slice();
 console.log(number.slice(-2));
-console.log( a = number.splice(2, 1, 2, 3))
+console.log( array = number.splice(2, 1, 2, 3))
 console.log(number)
-console.log(a)
-a.concat(number)
+console.log(array)
+array.concat(number)
 console.log(number)
-console.log(a)
+console.log(array)
 
 let arr = [["Car", 2000], ["Truck", 500], ["Bike", 6500]]
 console.log(arr)
@@ -80,7 +80,7 @@ let raw_array = [
 
 let sum = 0;
 
-raw_array.forEach((array) => {
+raw_array.forEach(array => {
     for (const key of array) if (key != null && key.temp <= 10) sum += key.population;
 });
 console.log(sum);
