@@ -31,3 +31,4 @@ function convertToGrades(studentScores) {
 console.log("Scores:", studentScores);
 console.log("Scores to grades:", convertToGrades(studentScores))
 
+module.exports = {convertToGrades};
