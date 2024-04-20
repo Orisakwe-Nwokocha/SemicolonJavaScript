@@ -1,4 +1,4 @@
-const {generate} = require("./ambitiousGameBoard");
+const {generate} = require("./AmbitiousGameBoard");
 
 test("generates correctly", () => {
     let length = 3;

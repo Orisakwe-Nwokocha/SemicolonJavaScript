@@ -1,4 +1,4 @@
-const {findTheHcfOf, findEvenNumbersFrom} = require("./hcf");
+const {findTheHcfOf, findEvenNumbersFrom} = require("./HCF");
 
 test('find the hcf', () => {
     expect(findTheHcfOf([4, 8, 8, 16])).toBe(4);

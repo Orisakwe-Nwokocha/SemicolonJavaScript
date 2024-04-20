@@ -1,4 +1,4 @@
-const {convertToGrades} = require('./maps_and_filters.js');
+const {convertToGrades} = require('./MapsAndFilters.js');
 
 test("convertToGrades", () => {
     const studentScores = [95, 78, 85, 60, 45, 92];
