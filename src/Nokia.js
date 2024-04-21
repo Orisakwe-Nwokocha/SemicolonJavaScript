@@ -20,7 +20,7 @@ function printMainMenu() {
 6. Settings
 7. Call Divert
 8. Games
-9. Speed dials
+9. Calculator
 10. Reminders
 11. Clock
 12. Profiles
@@ -106,19 +106,68 @@ function tonesMenu() {
     handleSubMenuInput(input(), options);
 }
 
-function settingsSubMenu(input) {
-    let options = ["Automatic redial", "Speed dialling", "Call waiting options", "Own number sending",
-        "Phone line in use", "Automatic answer"];
+function settingsMenu(input) {
+    let options = ["Call settings", "Phone settings", "Security settings", "Restore factory settings"];
     printSubMenu(options);
-    handleSubMenuInput(input, options);
+    let userChoice = input();
+    if (userChoice === "4") handleSubMenuInput(userChoice, options);
+    settingsSubMenu(userChoice);
 }
 
-function clockSubMenu(input) {
+function settingsSubMenu(userChoice) {
+    let options = ["Automatic redial", "Speed dialling", "Call waiting options", "Own number sending",
+        "Phone line in use", "Automatic answer"];
+    let options;
+    switch (userChoice) {
+        case "5":
+            options = ["Last call duration", "All calls' duration", "Received calls' duration",
+                "Dialled calls' duration", "Clear timers"];
+            break;
+        case "6":
+            options = ["Last call cost", "All calls' cost", "Clear counters"];
+            break;
+        case "7":
+            options = ["Call cost limit", "Show costs in"];
+            break;
+        default:
+            console.log("Invalid option!");
+            return;
+    }
+    printSubMenu(options);
+    handleSubMenuInput(input(), options);
+}
+
+function callDivertMenu() {
+    handleSubMenuInput("1", ["Call divert"]);
+}
+
+function gamesMenu() {
+    handleSubMenuInput("1", ["Games"]);
+}
+
+function calculatorMenu() {
+    handleSubMenuInput("1", ["Calculator"]);
+}
+
+function remindersMenu() {
+    handleSubMenuInput("1", ["Reminders"]);
+}
+
+function clockMenu() {
     let options = ["Alarm clock", "Clock settings", "Date settings", "Stopwatch",
         "Countdown timer", "Auto update of date and time"];
     printSubMenu(options);
-    handleSubMenuInput(input, options);
+    handleSubMenuInput(input(), options);
 }
+
+function profilesMenu() {
+    handleSubMenuInput("1", ["Profiles"]);
+}
+
+function simServicesMenu() {
+    handleSubMenuInput("1", ["SIM services"]);
+}
+
 
 function printSubMenu(options) {
     for (let i = 0; i < options.length; i++) console.log(`${i + 1}. ${options[i]}`);
@@ -143,14 +192,14 @@ function handleUserChoice() {
         3: () => chatMenu(),
         4: () => callRegisterMenu(),
         5: () => tonesMenu(),
-        6: () => settingsSubMenu(),
-        7: () => console.log("\nCall divert\n"),
-        8: () => console.log("\nGames\n"),
-        9: () => console.log("\nCalculator\n"),
-        10: () => console.log("\nReminders\n"),
-        11: () => clockSubMenu(),
-        12: () => console.log("\nProfiles\n"),
-        13: () => console.log("\nSIM services\n"),
+        6: () => settingsMenu(),
+        7: () => callDivertMenu(),
+        8: () => gamesMenu(),
+        9: () => calculatorMenu(),
+        10: () => remindersMenu(),
+        11: () => clockMenu(),
+        12: () => profilesMenu(),
+        13: () => simServicesMenu(),
         14: () => process.exit(0),
         default: () => printMainMenu()
     };
