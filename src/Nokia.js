@@ -30,6 +30,31 @@ function printMainMenu() {
     handleUserChoice();
 }
 
+function handleUserChoice() {
+    let userChoice = input();
+
+    const menuActions = {
+        1: () => phonebookMenu(),
+        2: () => messagesMenu(),
+        3: () => chatMenu(),
+        4: () => callRegisterMenu(),
+        5: () => tonesMenu(),
+        6: () => settingsMenu(),
+        7: () => callDivertMenu(),
+        8: () => gamesMenu(),
+        9: () => calculatorMenu(),
+        10: () => remindersMenu(),
+        11: () => clockMenu(),
+        12: () => profilesMenu(),
+        13: () => simServicesMenu(),
+        14: () => exitApp(),
+        default: () => printMainMenu()
+    };
+
+    const action = menuActions[userChoice] || menuActions.default;
+    action();
+}
+
 function phonebookMenu() {
     let options = ["Search", "Service Nos", "Add name", "Erase", "Edit", "Assign tone",
         "Send b’card", "Options", "Speed dials", "Voice tags"];
@@ -106,7 +131,7 @@ function tonesMenu() {
     handleSubMenuInput(input(), options);
 }
 
-function settingsMenu(input) {
+function settingsMenu() {
     let options = ["Call settings", "Phone settings", "Security settings", "Restore factory settings"];
     printSubMenu(options);
     let userChoice = input();
@@ -115,23 +140,23 @@ function settingsMenu(input) {
 }
 
 function settingsSubMenu(userChoice) {
-    let options = ["Automatic redial", "Speed dialling", "Call waiting options", "Own number sending",
-        "Phone line in use", "Automatic answer"];
     let options;
     switch (userChoice) {
-        case "5":
-            options = ["Last call duration", "All calls' duration", "Received calls' duration",
-                "Dialled calls' duration", "Clear timers"];
+        case "1":
+            options = ["Automatic redial", "Speed dialling", "Call waiting options", "Own number sending",
+                "Phone line in use", "Automatic answer"];
             break;
-        case "6":
-            options = ["Last call cost", "All calls' cost", "Clear counters"];
+        case "2":
+            options = ["Language", "Cell info display", "Welcome note", "Network selection",
+                "Lights", "Confirm SIM service actions"];
             break;
-        case "7":
-            options = ["Call cost limit", "Show costs in"];
+        case "3":
+            options = ["PIN code request", "Call barring service", "Fixed dialling", "Closed user group",
+                "Phone security", "Change access codes"];
             break;
         default:
             console.log("Invalid option!");
-            return;
+            printMainMenu();
     }
     printSubMenu(options);
     handleSubMenuInput(input(), options);
@@ -169,6 +194,11 @@ function simServicesMenu() {
 }
 
 
+function exitApp() {
+    console.log("Thanks for using this app!")
+    process.exit(0);
+}
+
 function printSubMenu(options) {
     for (let i = 0; i < options.length; i++) console.log(`${i + 1}. ${options[i]}`);
     console.log();
@@ -181,31 +211,6 @@ function handleSubMenuInput(userChoice, options) {
         console.log("Invalid option!");
     }
     printMainMenu();
-}
-
-function handleUserChoice() {
-    let userChoice = input();
-
-    const menuActions = {
-        1: () => phonebookMenu(),
-        2: () => messagesMenu(),
-        3: () => chatMenu(),
-        4: () => callRegisterMenu(),
-        5: () => tonesMenu(),
-        6: () => settingsMenu(),
-        7: () => callDivertMenu(),
-        8: () => gamesMenu(),
-        9: () => calculatorMenu(),
-        10: () => remindersMenu(),
-        11: () => clockMenu(),
-        12: () => profilesMenu(),
-        13: () => simServicesMenu(),
-        14: () => process.exit(0),
-        default: () => printMainMenu()
-    };
-
-    const action = menuActions[userChoice] || menuActions.default;
-    action();
 }
 
 
