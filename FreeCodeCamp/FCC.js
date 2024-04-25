@@ -55,15 +55,13 @@ console.log(whatIsInAName(collection, { "apple": 1, "bat": 2 }));
 function spinalCase(str) {
     return str
         .replace(/[^a-zA-Z0-9]/g, " ")
-        .replace(/([A-Z])/g, " $1")
-        .trim()
+        .replace(/([a-z])([A-Z])/g, "$1 $2")
         .split(" ")
         .join("-")
-        .replace(/-+/g, "-")
         .toLowerCase();
 }
 
-console.log(spinalCase('This Is Spinal Tap'));
 console.log(spinalCase("The_Andy_Griffith_Show"));
 console.log(spinalCase("Teletubbies say Eh-oh"));
 console.log(spinalCase('thisIsSpinalTap'));
+console.log(spinalCase('This Is Spinal Tap'));
