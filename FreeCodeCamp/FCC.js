@@ -89,3 +89,39 @@ function translatePigLatin(str) {
 
 console.log(translatePigLatin("consonant"));
 console.log(translatePigLatin("rhythm"));
+
+
+function myReplace(str, before, after) {
+    if (before[0].match(/[A-Z]/)) after = after[0].toUpperCase() + after.slice(1);
+    else after = after[0].toLowerCase() + after.slice(1);
+    return str.replace(before, after);
+}
+
+console.log(myReplace("A quick brown fox jumped over the lazy dog", "jumped", "leaped"));
+console.log(myReplace("Let us get back to more Coding", "Coding", "algorithms"));
+console.log(myReplace("I think we should look up there", "up", "Down"));
+
+
+function pairElement(str) {
+    let split = str.replace(/([A-Z])/g, "$1 ").trim().split(" ");
+    let  output = [];
+    split.forEach(char => {
+        switch (char) {
+            case "A":
+                output.push([char, "T"]);
+                break;
+            case "T":
+                output.push([char, "A"]);
+                break;
+            case "C":
+                output.push([char, "G"]);
+                break;
+            case "G":
+                output.push([char, "C"]);
+                break;
+        }
+    })
+    return output;
+}
+
+console.log(pairElement("GCG"));
