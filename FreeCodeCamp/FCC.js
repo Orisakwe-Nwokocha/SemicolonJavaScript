@@ -65,3 +65,27 @@ console.log(spinalCase("The_Andy_Griffith_Show"));
 console.log(spinalCase("Teletubbies say Eh-oh"));
 console.log(spinalCase('thisIsSpinalTap'));
 console.log(spinalCase('This Is Spinal Tap'));
+
+
+function translatePigLatin(str) {
+    str = str.toLowerCase();
+    let vowels = ["a", "e", "i", "o", "u"];
+    if (vowels.includes(str[0])) return str.slice(0, 1) + str.slice(1) + "way";
+
+    let split = str
+        .replace(/([a-z])/g, "$1 ")
+        .trim()
+        .split(" ");
+
+    function check(split) {
+        for (let i = 0; i < split.length; i++) if (vowels.includes(split[i])) return i;
+        return -1;
+    }
+
+    let index = check(split);
+    if (index === -1) return str + "ay";
+    return str.slice(index) + str.slice(0, index) + "ay";
+}
+
+console.log(translatePigLatin("consonant"));
+console.log(translatePigLatin("rhythm"));
