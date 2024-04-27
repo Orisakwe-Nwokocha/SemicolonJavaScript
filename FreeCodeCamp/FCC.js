@@ -4,7 +4,8 @@ function diffArray(arr1, arr2) {
 }
 
 console.log(diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]));
-console.log(diffArray(["diorite", "andesite", "grass", "dirt", "pink wool", "dead shrub"], ["diorite", "andesite", "grass", "dirt", "dead shrub"]));
+console.log(diffArray(["diorite", "andesite", "grass", "dirt", "pink wool", "dead shrub"],
+                      ["diorite", "andesite", "grass", "dirt", "dead shrub"]));
 
 
 function sumAll(arr) {
@@ -32,7 +33,7 @@ function whatIsInAName(collection, source) {
         let sourceArr = [];
         for (const key in source) sourceArr.push(key);
         let counter = 0;
-        for (const key in obj) if ((obj[key] === source[key])) counter++;
+        for (const key in obj) if (obj[key] === source[key]) counter++;
         if (counter === sourceArr.length && !result.includes(obj)) result.push(obj);
 
     });
@@ -161,7 +162,8 @@ function fearNotLetter(str) {
         if (alphabets[index] !== str[counter++]) return alphabets[index];
         if (counter === str.length) break;
     }
-}*/
+}
+ */
 
 // second try
 function fearNotLetter(str) {
@@ -175,3 +177,50 @@ function fearNotLetter(str) {
 console.log(fearNotLetter("abce"));
 console.log(fearNotLetter("stvwx"));
 console.log(fearNotLetter("abcdefghijklmnopqrstuvwxyz"));
+
+
+function uniteUnique(arr) {
+    const otherArgs = Array.from(arguments);
+    let result = [];
+    otherArgs.forEach(array => {
+        array.forEach(element => {
+            if (!result.includes(element)) result.push(element);
+        });
+    });
+    return result;
+}
+
+/**
+ *  Using set to sort the unique elements
+
+function uniteUnique(arr) {
+    const otherArgs = Array.from(arguments);
+    let result = [];
+    otherArgs.forEach(array => result = result.concat(array));
+
+    return Array.from(new Set(result));
+}*/
+
+
+console.log(uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]));
+console.log(uniteUnique([1, 2, 3], [5, 2, 1]));
+console.log(uniteUnique([1, 3, 2, 3], [5, 2, 1, 4], [2, 1]));
+
+
+function convertHTML(str) {
+    const htmlPairs = {
+        '&': "&amp;",
+        '<': "&lt;",
+        '>': "&gt;",
+        '"': "&quot;",
+        '\'': "&apos;"
+    }
+
+    return str
+        .split("")
+        .map(char => htmlPairs[char] || char)
+        .join("");
+}
+
+console.log(convertHTML("Dolce & Gabbana"));
+console.log(convertHTML("Hamburgers < Pizza < Tacos"));
