@@ -224,3 +224,19 @@ function convertHTML(str) {
 
 console.log(convertHTML("Dolce & Gabbana"));
 console.log(convertHTML("Hamburgers < Pizza < Tacos"));
+
+
+function rot13(str) {
+    return str.split("").map(character => {
+        if (!character.match(/[a-zA-Z]/)) return character;
+
+        let codePoint = character.codePointAt(0);
+        let isAfterM = (/^[a-z]/.test(character) && codePoint > 109) || (/^[A-Z]/.test(character) && codePoint > 77);
+        codePoint = isAfterM ? codePoint - 13 : codePoint + 13;
+        return String.fromCodePoint(codePoint);
+    }).join("");
+}
+
+console.log(rot13("SERR PBQR PNZC"));
+console.log(rot13("SeRr PBQR PNZC"));
+console.log(rot13("GUR DHVPX OEBJA SBK WHZCF BIRE GUR YNML QBT."));
