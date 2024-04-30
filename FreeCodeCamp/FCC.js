@@ -296,3 +296,18 @@ function smallestCommons(arr) {
 
 console.log(smallestCommons([1,5]));
 console.log(smallestCommons([23, 18]));
+
+
+function dropElements(arr, func) {
+    const sliceIndex = () =>{
+        for (let index = 0; index < arr.length; index++) if (func(arr[index])) return index;
+        return -1;
+    }
+    let index = sliceIndex();
+
+    return index === - 1 ? [] : arr.splice(index);
+}
+
+console.log(dropElements([1, 2, 3], function(n) {return n < 3; }));
+console.log(dropElements([1, 2, 3, 4], function(n) {return n > 5;}));
+console.log(dropElements([1, 2, 3, 7, 4], function(n) {return n > 3;}))
