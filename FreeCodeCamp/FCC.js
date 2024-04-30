@@ -267,11 +267,7 @@ function sumPrimes(num) {
 
     const isPrime = (number) => {
         if (number <= 3) return true;
-        for (let i = 2; i < number; i++) {
-            let count = 0;
-            if (number % i === 0) count++;
-            if (count === 1) return false;
-        }
+        for (let i = 2; i < number; i++) if (number % i === 0) return false;
         return true;
     }
 
