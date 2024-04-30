@@ -265,7 +265,7 @@ console.log(sumFibs(4000000));
 function sumPrimes(num) {
     if (num <= 1) return 0;
 
-    const isPrime = (number) => {
+    const isPrime = number => {
         if (number <= 3) return true;
         for (let i = 2; i < number; i++) if (number % i === 0) return false;
         return true;
@@ -279,3 +279,20 @@ function sumPrimes(num) {
 
 console.log(sumPrimes(10));
 console.log(sumPrimes(977));
+
+
+function smallestCommons(arr) {
+    let max = Math.max(...arr);
+    let min = Math.min(...arr);
+    let rangeOfNumbers = [];
+    for (let i = min; i <= max; i++) rangeOfNumbers.push(i);
+
+    function isDivisible(number) {
+        for (let num of rangeOfNumbers) if (number % num !== 0) return false;
+        return true;
+    }
+    for (let number = min; ; number++) if (isDivisible(number)) return number;
+}
+
+console.log(smallestCommons([1,5]));
+console.log(smallestCommons([23, 18]));
