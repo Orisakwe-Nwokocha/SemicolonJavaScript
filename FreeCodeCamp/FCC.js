@@ -233,6 +233,7 @@ function rot13(str) {
         let codePoint = character.codePointAt(0);
         let isAfterM = (/^[a-z]/.test(character) && codePoint > 109) || (/^[A-Z]/.test(character) && codePoint > 77);
         codePoint = isAfterM ? codePoint - 13 : codePoint + 13;
+
         return String.fromCodePoint(codePoint);
     }).join("");
 }
@@ -240,3 +241,45 @@ function rot13(str) {
 console.log(rot13("SERR PBQR PNZC"));
 console.log(rot13("SeRr PBQR PNZC"));
 console.log(rot13("GUR DHVPX OEBJA SBK WHZCF BIRE GUR YNML QBT."));
+
+
+function sumFibs(num) {
+    let series = 1;
+    let previousSum = 1;
+    let result = 1;
+
+    for (let i = 0; i < num; i++) {
+        if (series % 2 !== 0 && series <= num) result += series;
+        series += previousSum;
+        previousSum = series - previousSum;
+    }
+
+    return result;
+}
+
+console.log(sumFibs(4));
+console.log(sumFibs(9));
+console.log(sumFibs(4000000));
+
+
+function sumPrimes(num) {
+    if (num <= 1) return 0;
+
+    const isPrime = (number) => {
+        if (number <= 3) return true;
+        for (let i = 2; i < number; i++) {
+            let count = 0;
+            if (number % i === 0) count++;
+            if (count === 1) return false;
+        }
+        return true;
+    }
+
+    let result = 0;
+    for (let number = 2; number <= num; number++) if (isPrime(number) && number <= num) result += number;
+
+    return result;
+}
+
+console.log(sumPrimes(10));
+console.log(sumPrimes(977));
