@@ -376,3 +376,166 @@ console.log(truthCheck([
     {name: "Pikachu", number: 25, caught: 3},
     {name: "Togepi", number: 175, caught: 1}], "number"));
 
+
+function addTogether() {
+    const [first, second] = arguments;
+    if (arguments.length === 1 && Number.isFinite(first))
+        return (second) => addTogether(first, second);
+
+    return typeof first === 'number' && typeof second === 'number' ? first + second : undefined;
+}
+
+console.log(addTogether(5));
+console.log(addTogether(5)(7));
+console.log(addTogether("2",3));
+console.log(addTogether(2,3));
+console.log(addTogether("https://www.youtube.com/watch?v=dQw4w9WgXcQ"));
+console.log(addTogether("5"));
+
+
+const Person = function(first, last) {
+    let firstName = first;
+    let lastName = last;
+
+    this.setFirstName = (first) => firstName = first;
+    this.getFirstName = () => {
+        return firstName;
+    };
+
+    this.setLastName = (last) => lastName = last;
+    this.getLastName = () => {
+        return lastName;
+    };
+
+    this.setFullName = (first, last) => {
+        firstName = first;
+        lastName = last;
+    };
+    this.getFullName = () => {
+        return firstName + " " + lastName;
+    };
+};
+
+let bob = new Person("Bob", "Ross");
+console.log(bob.getFirstName());
+console.log(bob.getLastName());
+console.log(bob.getFullName());
+console.log(Object.keys(bob).length);
+
+
+function telephoneCheck(str) {
+    str = str.replaceAll(" ", "");
+    let regex = /^1?((\(\d{3}\))|\d{3})-?\d{3}-?\d{4}$/;
+    return regex.test(str);
+}
+
+console.log(telephoneCheck("11 555 555 5555"));
+
+
+function orbitalPeriod(arr) {
+    const GM = 398600.4418;
+    const earthRadius = 6367.4447;
+
+    const result = [];
+    arr.forEach(satellite => {
+        const semiMajorAxis = earthRadius + satellite.avgAlt;
+
+        const T = 2 * Math.PI * Math.sqrt((Math.pow(semiMajorAxis, 3)) / GM);
+        const orbitalPeriod = Math.round(T);
+
+        result.push({ name: satellite.name, orbitalPeriod });
+    });
+
+    return result;
+}
+
+console.log(orbitalPeriod([{name : "sputnik", avgAlt : 35873.5553}]));
+
+
+function checkCashRegister(price, cash, cid) {
+    let changeNeeded = cash - price;
+    let totalCID = 0;
+
+    for (let currency of cid) totalCID += currency[1];
+
+    if (totalCID < changeNeeded) return {status: "INSUFFICIENT_FUNDS", change: []}
+    else if (totalCID === changeNeeded) return {status: "CLOSED", change: cid};
+
+    const currencyUnitValues = {
+        "PENNY": 0.01,
+        "NICKEL": 0.05,
+        "DIME": 0.1,
+        "QUARTER": 0.25,
+        "ONE": 1,
+        "FIVE": 5,
+        "TEN": 10,
+        "TWENTY": 20,
+        "ONE HUNDRED": 100
+    };
+
+    let change = [];
+    for (let index = cid.length -1; index >=0; index--) {
+        const currencyName = cid[index][0];
+        const currencyValue = currencyUnitValues[currencyName];
+        let currencyAmount = cid[index][1];
+        let currencyCount = 0;
+
+        while (changeNeeded >= currencyValue && currencyAmount > 0) {
+            changeNeeded -= currencyValue;
+            changeNeeded = Math.round(changeNeeded * 100) / 100;
+            currencyAmount -= currencyValue;
+            currencyCount += currencyValue;
+        }
+
+        if (currencyCount > 0) change.push([currencyName, currencyCount]);
+    }
+
+    if (changeNeeded > 0) return {status: "INSUFFICIENT_FUNDS", change: []};
+
+    return {status: "OPEN", change: change};
+}
+
+console.log(checkCashRegister(19.5, 20,
+    [["PENNY", 0.5], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0],
+        ["ONE", 0], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]]));
+
+console.log(checkCashRegister(19.5, 20,
+    [["PENNY", 0.01], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0],
+        ["ONE", 0], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]]));
+
+console.log(checkCashRegister(3.26, 100,
+    [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25],
+        ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]));
+
+
+function convertToRoman(num) {
+    const symbols = ["I", "IV", "V", "IX", "X", "XL",
+        "L", "XC", "C", "CD", "D", "CM", "M"];
+    const values = [1, 4, 5, 9, 10, 40, 50, 90, 100,
+        400, 500, 900, 1000];
+
+    let result = "";
+    let index = symbols.length - 1;
+
+    while (num > 0) {
+        while (num >= values[index]) {
+            result += symbols[index];
+            num -= values[index];
+        }
+
+        index--
+    }
+    return result;
+}
+
+console.log(convertToRoman(1200));
+
+
+function palindrome(str) {
+    str = str.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+    return str === str.split("").reverse().join("");
+}
+
+
+console.log(palindrome("not a palindrome"));
+console.log(palindrome("RaceCar"));

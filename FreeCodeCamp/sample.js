@@ -17,3 +17,4 @@ console.log(index);
 console.log(k);
 console.log(h.slice(index) + h.slice(0, index) + "ay" );
 console.log(vowels.includes(k));
+
